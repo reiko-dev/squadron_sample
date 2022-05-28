@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:squadron/squadron.dart';
+import 'package:squadron_sample/src/dft/dft_page.dart';
+import 'package:squadron_sample/src/pi-digits/pi_digits_page.dart';
 
 import 'src/parser3/parser3_page.dart';
-import 'src/pi-digits/pi_digits_page.dart';
 import 'src/text-size/text_size_page.dart';
 import 'src/thumbnails/thumbnail_page.dart';
 import 'src/parser/parser_page.dart';
@@ -30,12 +31,13 @@ class SampleApp extends StatefulWidget {
 class _SampleAppState extends State<SampleApp>
     with SingleTickerProviderStateMixin {
   static const List<Tab> myTabs = <Tab>[
-    Tab(text: 'Pi Digits'),
+    Tab(text: 'Dft'),
     Tab(text: 'Thumbnails'),
     Tab(text: 'TextSize'),
     Tab(text: 'Parser (list)'),
     Tab(text: 'Parser (stream)'),
     Tab(text: 'Parser (yield)'),
+    Tab(text: 'Pi Digits'),
   ];
 
   late TabController _tabController;
@@ -58,12 +60,13 @@ class _SampleAppState extends State<SampleApp>
   TabBar _tabBar() => TabBar(tabs: myTabs, controller: _tabController);
 
   Widget _home(BuildContext context) {
-    if (_tabController.index == 0) return PiDigitsPage(tabBar: _tabBar());
+    if (_tabController.index == 0) return DftPage(tabBar: _tabBar());
     if (_tabController.index == 1) return ThumbnailPage(tabBar: _tabBar());
     if (_tabController.index == 2) return TextSizePage(tabBar: _tabBar());
     if (_tabController.index == 3) return ParserPage(tabBar: _tabBar());
     if (_tabController.index == 4) return Parser2Page(tabBar: _tabBar());
     if (_tabController.index == 5) return Parser3Page(tabBar: _tabBar());
+    if (_tabController.index == 6) return PiDigitsPage(tabBar: _tabBar());
     return Text('_tabController.index = ${_tabController.index}');
   }
 
